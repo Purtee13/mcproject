@@ -143,135 +143,129 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 10,
-                child: Container(
-                  color: Colors.grey.shade100,
-                ),
-              ),
-              SizedBox(height: 5),
-              CustomAppBar(
-                  quoteIndex: qIndex,
-                  onTap: () {
-                    getRandomQuote();
-                  }),
-              SizedBox(height: 5),
-              Expanded(
-                child: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    SizedBox(height: 10),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CircleAvatar(
-                                  child: Icon(Icons.flight_takeoff_outlined),
-                                  backgroundColor: Colors.grey.shade300,
-                                ),
-                                SizedBox(width: 5),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    _locationPermissionGranted == false
-                                        ? Text(
-                                            "Turn on location services.",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )
-                                        : Text("Location enabled"),
-                                    SizedBox(height: 5),
-                                    _currentCity.isEmpty
-                                        ? Text(
-                                            "please enable locations for a better \nexperiences.",
-                                            maxLines: 2,
-                                            style: TextStyle(),
-                                          )
-                                        : Text("Current City $_currentCity"),
-                                    SizedBox(height: 5),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: _locationPermissionGranted == true
-                                          ? SizedBox()
-                                          : MaterialButton(
-                                              onPressed: () async {
-                                                checkLocationPermission();
-                                              },
-                                              color: Colors.grey.shade100,
-                                              shape: StadiumBorder(),
-                                              child: Text(
-                                                "Enable location",
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
+        child: Column(
+          children: [
+            Container(
+              color: Colors.grey.shade100,
+            ),
+            SizedBox(height: 5),
+            CustomAppBar(
+                quoteIndex: qIndex,
+                onTap: () {
+                  getRandomQuote();
+                }),
+            SizedBox(height: 5),
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  SizedBox(height: 10),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CircleAvatar(
+                                child: Icon(Icons.flight_takeoff_outlined),
+                                backgroundColor: Colors.grey.shade300,
+                              ),
+                              SizedBox(width: 5),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _locationPermissionGranted == false
+                                      ? Text(
+                                          "Turn on location services.",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      : Text("Location enabled"),
+                                  SizedBox(height: 5),
+                                  _currentCity.isEmpty
+                                      ? Text(
+                                          "please enable locations for a better \nexperiences.",
+                                          maxLines: 2,
+                                          style: TextStyle(),
+                                        )
+                                      : Text("Current City $_currentCity"),
+                                  SizedBox(height: 5),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: _locationPermissionGranted == true
+                                        ? SizedBox()
+                                        : MaterialButton(
+                                            onPressed: () async {
+                                              checkLocationPermission();
+                                            },
+                                            color: Colors.grey.shade100,
+                                            shape: StadiumBorder(),
+                                            child: Text(
+                                              "Enable location",
+                                              style: TextStyle(
+                                                  color: Colors.black),
                                             ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                                          ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Incase of emergency dial me",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Incase of emergency dial me",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Emergency(),
-                    SizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Explore your power",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
+                  ),
+                  Emergency(),
+                  SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Explore your power",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    CustomCarouel(),
-                    SizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Explore LiveSafe",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
+                  ),
+                  SizedBox(height: 10),
+                  CustomCarouel(),
+                  SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Explore LiveSafe",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    LiveSafe(),
-                    SafeHome(),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 10),
+                  LiveSafe(),
+                  SafeHome(),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
